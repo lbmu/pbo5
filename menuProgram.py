@@ -2,6 +2,7 @@ from databasefunction import *
 from classAdmin import *
 from classManager import *
 from classBuyer import *
+from classTicket import *
 # import database as db
 # import database
 
@@ -51,6 +52,9 @@ def managerMenu(user, pin):
             elif menu == 'o':
                 manager.outputData()
                 pass
+            elif menu == 'l':
+                manager.tiketData()
+
             menu = inputMenuPriv()
             pass
 
@@ -60,11 +64,19 @@ def managerMenu(user, pin):
 
 
 def buyerMenu(user, pin):
-    if user in username['user'] and pin in password['user']:
-        print('Welcome to mobel lejeng')
-        buyer = Buyer()
-    else:
-        print('Maaf salah username atau password')
+    print('Welcome to mobel lejeng')
+    buyer = Buyer(data['penerbangan'], data['armada'], tiket)
+    menu = None
+    while menu != 'k':
+        if menu == 'c':
+            buyer.cariData()
+            pass
+        elif menu == 'd':
+            buyer.outputData()
+            pass
+        elif menu == 'p':
+            pass
+        menu = inputMenuUser()
     pass
 
 

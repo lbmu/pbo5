@@ -1,8 +1,8 @@
 class Admin:
-    def __init__(self, user, password):
+    def __init__(self, user, pwd):
         self.__user = user
-        self.__password = password
-        self.jumlahData = len(user)
+        self.__password = pwd
+        self.jumlahData = len(self.__user)
         # self.key = key
         pass
 
@@ -42,6 +42,9 @@ class Admin:
                                  '[P]assword\n'
                                  '[K]eluar\n').lower()
                 pass
+        pass
+
+    def output(self, data):
         pass
 
     def outputData(self):
