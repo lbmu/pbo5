@@ -4,35 +4,18 @@ from classTicket import Ticket, menuTiket
 
 
 class Manager(Admin):
-    def __init__(self, terbang, armada, tiket):
-        super().__init__
+    def __init__(self, terbang, armada):
         self._terbang = []
         self._depart = terbang[0]   # Departure
         self._arrive = terbang[1]   # Arrival
         self._armada = armada
-        self._tiket = tiket
+        # self.tiket = None
         self._dataTerbang = len(terbang)
         self._dataArmada = len(armada)
-        self._dataTiket = len(tiket)
         self.__userQty = None
         pass
 
-    def getData(self):
-        return self
-
-    @property
-    def getTiket(self):
-        return self._tiket
-
-    @property
-    def getTerbang(self):
-        return self._terbang
-
-    @property
-    def getArmada(self):
-        return self._armada
-
-    def tambahData(self):
+    def _tambahData(self):
         menu = None
         while menu != 'k':
             if menu == 'p':
@@ -51,7 +34,7 @@ class Manager(Admin):
             menu = inputMenuManager()
         pass
 
-    def hapusData(self):
+    def _hapusData(self):
         menu = None
         while menu != 'k':
             if menu == 'p':
@@ -73,7 +56,7 @@ class Manager(Admin):
 
         pass
 
-    def editData(self):
+    def _editData(self):
         menu = None
         while menu != 'k':
             if menu == 'p':     # Penerbangan
@@ -91,8 +74,9 @@ class Manager(Admin):
             menu = inputMenuManager()
         pass
 
-    def tiketData(self):
-        tiket = Ticket(self._tiket)
+    def tiketData(self, tiket):
+        self.tiket = tiket
+        tiket = Ticket(self.tiket)
         menu = None
         while menu != 'k':
             if menu == 'e':
@@ -106,14 +90,6 @@ class Manager(Admin):
                 pass
             # elif menu == ''
             menu = menuTiket(menu)
-
-    def output(self, data):
-        i = 1
-        for x in data:
-            print(i, end='. ')
-            i += 1
-            print(x)
-        pass
 
     def outputData(self):
         menu = None

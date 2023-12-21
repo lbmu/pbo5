@@ -9,19 +9,19 @@ from classTicket import *
 
 def adminMenu(user, pin):
     # for i in range(len(akun['admin'])):
-    if user == username['admin'] and pin == password['admin']:
+    if user in username['admin'] and pin in password['admin']:  # login admin
         print('adm priv')
-        admin = Admin(username['manager'], password['manager'])
+        admin = Admin(username['manager'], password['manager']) # objek admin untuk data manager
         inputMenuAdmin = None
         while inputMenuAdmin != 'k':
             if inputMenuAdmin == 't':
-                admin.tambahData()
+                admin._tambahData()
                 pass
             elif inputMenuAdmin == 'h':
-                admin.hapusData()
+                admin._hapusData()
                 pass
             elif inputMenuAdmin == 'e':
-                admin.editData()
+                admin._editData()
                 pass
             elif inputMenuAdmin == 'o':
                 admin.outputData()
@@ -37,23 +37,24 @@ def adminMenu(user, pin):
 def managerMenu(user, pin):
     if user in username['manager'] and pin in password['manager']:
         print('manager priv')
-        manager = Manager(data['penerbangan'], data['armada'], tiket)
         menu = None
+        manager = Manager(data['penerbangan'], data['armada'])
+        # manager.tiket = tiket
         while menu != 'k':
             if menu == 't':
-                manager.tambahData()
+                manager._tambahData()
                 pass
             elif menu == 'h':
-                manager.hapusData()
+                manager._hapusData()
                 pass
             elif menu == 'e':
-                manager.editData()
+                manager._editData()
                 pass
             elif menu == 'o':
                 manager.outputData()
                 pass
             elif menu == 'l':
-                manager.tiketData()
+                manager.tiketData(tiket)
 
             menu = inputMenuPriv()
             pass
@@ -65,7 +66,8 @@ def managerMenu(user, pin):
 
 def buyerMenu(user, pin):
     print('Welcome to mobel lejeng')
-    buyer = Buyer(data['penerbangan'], data['armada'], tiket)
+    buyer = Buyer(data['penerbangan'], data['armada'])
+    # buyer.tiket = tiket
     menu = None
     while menu != 'k':
         if menu == 'c':
@@ -78,5 +80,3 @@ def buyerMenu(user, pin):
             pass
         menu = inputMenuUser()
     pass
-
-

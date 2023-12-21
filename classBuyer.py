@@ -1,15 +1,16 @@
 from classManager import *
 from classTicket import Ticket
-from databasefunction import penerbangan
+from databasefunction import penerbangan, tiket
 
 
 class Buyer(Manager, Ticket):
-    def __init__(self, terbang, armada, tiket):
-        # super().__init__
-        Manager.__init__(self, terbang, armada, tiket)
+    def __init__(self, terbang, armada):
+        Manager.__init__(self, terbang, armada)
+        Ticket.__init__(self, tiket)
         self.terbang = terbang
-        self.armada = armada
-        self.tiket = tiket
+        # self.tiket =
+        # super().__init__
+        pass
 
     def cariData(self):
         menu = None
@@ -26,7 +27,13 @@ class Buyer(Manager, Ticket):
     def outputData(self):
         menu = None
         while menu != 'k':
-            print(self.terbang)
+            if menu == 'd':
+                self.output(self._terbang)
+            elif menu == 't':
+                self.output(self.tiket)
+            elif menu == 'a':
+                self.output(self._armada)
+
             menu = input()
 
     pass

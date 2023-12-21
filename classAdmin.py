@@ -1,12 +1,12 @@
 class Admin:
     def __init__(self, user, pwd):
-        self.__user = user
-        self.__password = pwd
-        self.jumlahData = len(self.__user)
+        self.__user = user  # daftar username manager
+        self.__password = pwd   # daftar password manager
+        self.jumlahData = len(user) # jumlah manager
         # self.key = key
         pass
 
-    def tambahData(self):
+    def _tambahData(self):
         print('===TAMBAH AKUN MANAGER===')
         user = input('username : ')
         password = input('password : ')
@@ -15,7 +15,7 @@ class Admin:
         self.jumlahData += 1
         pass
 
-    def hapusData(self):
+    def _hapusData(self):
         data = input('Masukkan username yang ingin dihapus : ')
         for i in range(self.jumlahData):
             print(i)
@@ -26,7 +26,7 @@ class Admin:
                 break
             pass
 
-    def editData(self):
+    def _editData(self):
         data = input('Masukkan username yang ingin diedit : ')
         for i in range(self.jumlahData):
             if self.__user[i] == data:
@@ -45,17 +45,18 @@ class Admin:
         pass
 
     def output(self, data):
+        i = 1
+        for x in data:
+            print(i, end='. ')
+            i += 1
+            print(x)
         pass
 
     def outputData(self):
         print('===USER===')
-        for x in self.__user:
-            print(x)
-            pass
+        self.output(self.__user)
         print('===PASSWORD===')
-        for x in self.__password:
-            print(x)
-            pass
+        self.output(self.__password)
         print(self.jumlahData)
 
     pass

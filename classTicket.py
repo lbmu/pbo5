@@ -31,7 +31,6 @@ class Ticket:
             self.__tiket[self.__jenisTiket[jenis]][1] = int(input('Harga Baru\n--> '))
             pass
 
-
     def jenisTiket(self):
         key = self.__tiket.keys()
         i = 1

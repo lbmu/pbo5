@@ -5,14 +5,14 @@ password = {'admin': '',
             'manager': [''],
             'user': ['']}
 data = {'penerbangan': [
-    [],     # Departure (dengan syntax data['penerbangan'][0])
-    []      # Arrival (data['penerbangan'][1])
+    ['Jakarta'],     # Departure (dengan syntax data['penerbangan'][0])
+    ['Surabaya']      # Arrival (data['penerbangan'][1])
 ],
-        'armada': []}
+    'armada': ['Rusdi Airline']}
 
-tiket = {'regular':    [0, 10],     # Jenis Tiket mengikuti key dari dict
-         'premium':    [0, 20],     # List pada index pertama (0) adalah jumlah tiket
-         'firstclass': [0, 30]}     # List pada index kedua (10, 20, 30) adalah Harga Tiket
+tiket = {'regular':    [1000, 800000],     # Jenis Tiket mengikuti key dari dict
+         'premium':    [700, 1500000],     # List pada index pertama (0) adalah jumlah tiket
+         'firstclass': [200, 2000000]}     # List pada index kedua (10, 20, 30) adalah Harga Tiket
 
 
 # print(type(akun['manajer']))
