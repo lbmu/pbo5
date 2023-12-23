@@ -16,9 +16,13 @@ def main():
             managerMenu(input('Username : '), input('Password : '))
             pass
         elif mainMenu == 'c':
-            buyerMenu(input('Username : '), input('Password : '))
+            buyerMenu()
             pass
         pass
+    outputValue(data['penerbangan'])
+    outputValue(data['armada'])
+    outputValue(data['rute'])
+
     pass
 
 

@@ -1,34 +1,39 @@
 class Admin:
     def __init__(self, user, pwd):
-        self.__user = user  # daftar username manager
-        self.__password = pwd   # daftar password manager
-        self.jumlahData = len(user) # jumlah manager
+        self.__user = user              # daftar username manager
+        self.__password = pwd           # daftar password manager
+        self.__jumlahData = len(user)   # jumlah manager
         # self.key = key
         pass
 
-    def _tambahData(self):
+    def tambahData(self):
         print('===TAMBAH AKUN MANAGER===')
+        print('USERNAME YANG TERSEDIA : ')
+        self.output(self.__user)
         user = input('username : ')
         password = input('password : ')
         self.__user.append(user)
         self.__password.append(password)
-        self.jumlahData += 1
+        self.__jumlahData += 1
         pass
 
-    def _hapusData(self):
+    def hapusData(self):
+        print('===EDIT USERNAME===')
+        self.output(self.__user)
         data = input('Masukkan username yang ingin dihapus : ')
-        for i in range(self.jumlahData):
+        for i in range(self.__jumlahData):
             print(i)
             if self.__user[i] == data:
                 self.__user.pop(i)
                 self.__password.pop(i)
-                self.jumlahData -= 1
+                self.__jumlahData -= 1
                 break
             pass
 
-    def _editData(self):
+    def editData(self):
+        self.output(self.__user)
         data = input('Masukkan username yang ingin diedit : ')
-        for i in range(self.jumlahData):
+        for i in range(self.__jumlahData):
             if self.__user[i] == data:
                 menu = None
                 while menu != 'k':
@@ -38,25 +43,26 @@ class Admin:
                     elif menu == 'p':
                         self.__password[i] = input('password baru : ')
                         pass
-                    menu = input('[U]sername\n'
-                                 '[P]assword\n'
-                                 '[K]eluar\n').lower()
+                    menu = input('[U]sername | '
+                                 '[P]assword | '
+                                 '[K]eluar\n'
+                                 '--> ').lower()
                 pass
         pass
 
     def output(self, data):
         i = 1
         for x in data:
-            print(i, end='. ')
+            print(f'({i}) {x}')
             i += 1
-            print(x)
         pass
 
     def outputData(self):
         print('===USER===')
         self.output(self.__user)
         print('===PASSWORD===')
-        self.output(self.__password)
-        print(self.jumlahData)
+        # self.output(self.__password)
+        print('===JUMLAH MANAGER===')
+        print(self.__jumlahData, 'Manager')
 
     pass

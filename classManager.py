@@ -1,21 +1,34 @@
-from classAdmin import *
-from databasefunction import inputMenuManager
-from classTicket import Ticket, menuTiket
+from classTicket import *
+
+
+def penerbangan():
+    return input('[D]eparture | '
+                 '[A]rrival | '
+                 '[K]eluar\n'
+                 '--> ').lower()
+
+
+def inputMenuManager():
+    return input('======\n'
+                 '[P]enerbangan | '
+                 '[A]rmada | '
+                 '[K]eluar\n'
+                 '--> ').lower()
 
 
 class Manager(Admin):
-    def __init__(self, terbang, armada):
-        self._terbang = []
+    def __init__(self, terbang, armada, rute, tiket):
         self._depart = terbang[0]   # Departure
         self._arrive = terbang[1]   # Arrival
+        self._rute = rute
         self._armada = armada
-        # self.tiket = None
+        self.tiket = Ticket(tiket)
         self._dataTerbang = len(terbang)
         self._dataArmada = len(armada)
         self.__userQty = None
         pass
 
-    def _tambahData(self):
+    def tambahData(self):
         menu = None
         while menu != 'k':
             if menu == 'p':
@@ -24,7 +37,7 @@ class Manager(Admin):
                 dataArrive = input('Tujuan : ')
                 self._arrive.append(dataArrive)
 
-                self._terbang.append(dataDepart + ' - ' + dataArrive)
+                self._rute.append(f'{dataDepart} - {dataArrive}')
                 self._dataTerbang += 1
             elif menu == 'a':   # Armada
                 self._armada.append(input('Masukkan Data Armada\n--> '))
@@ -34,18 +47,14 @@ class Manager(Admin):
             menu = inputMenuManager()
         pass
 
-    def _hapusData(self):
+    def hapusData(self):
         menu = None
         while menu != 'k':
             if menu == 'p':
                 # Penerbangan
-                i = 1
-                for x in self._terbang:
-                    print(i, end='. ')
-                    i += 1
-                    print(x)
+                self.output(self._rute)
                 pivot = int(input('Masukkan Data yang ingin dihapus = '))
-                self._terbang.pop(pivot-1)
+                self._rute.pop(pivot-1)
                 pass
             elif menu == 'a':   # Armada
                 for i in range(self._dataArmada):
@@ -56,14 +65,14 @@ class Manager(Admin):
 
         pass
 
-    def _editData(self):
+    def editData(self):
         menu = None
         while menu != 'k':
             if menu == 'p':     # Penerbangan
                 for i in range(self._dataTerbang):
-                    print(f'{i+1}. {self._terbang[i]}')
+                    print(f'{i+1}. {self._rute[i]}')
                     pivot = int(input('Masukkan Data yang ingin diedit : '))
-                    self._terbang[pivot-1] = input('Masukkan data baru\n')
+                    self._rute[pivot-1] = input('Masukkan data baru\n')
                 pass
             elif menu == 'a':   # Armada
                 for i in range(self._dataArmada):
@@ -80,10 +89,10 @@ class Manager(Admin):
         menu = None
         while menu != 'k':
             if menu == 'e':
-                tiket.editTiket()
+                tiket.editData()
                 pass
             elif menu == 'o':
-                tiket.outputTiket()
+                tiket.outputData()
                 pass
             elif menu == 'j':
                 tiket.jenisTiket()
@@ -95,33 +104,36 @@ class Manager(Admin):
         menu = None
         while menu != 'k':
             if menu == 'p':
-                subMenu = input('[D]eparture\n'
-                                '[A]rrival\n'
-                                '[P]enerbangan\n'
-                                '--> ').lower()
-                if subMenu == 'p':
-                    self.output(self._terbang)
-                    pass
-                elif subMenu == 'a':
-                    self.output(self._arrive)
-                    pass
-                elif subMenu == 'd':
-                    self.output(self._depart)
-                    pass
+                subMenu = None
+                while subMenu != 'k':
+                    if subMenu == 'p':
+                        self.output(self._rute)
+                        pass
+                    elif subMenu == 'a':
+                        self.output(self._arrive)
+                        pass
+                    elif subMenu == 'd':
+                        self.output(self._depart)
+                        pass
+                    subMenu = input('[D]eparture | '
+                                    '[A]rrival | '
+                                    '[P]enerbangan | '
+                                    '[K]eluar\n'
+                                    '--> ').lower()
                 pass
 
             elif menu == 'a':
                 self.output(self._armada)
                 pass
             elif menu == 't':
-
+                self.tiket.outputData()
                 pass
             elif menu == 'b':  # buyer
                 pass
             elif menu == 'c':  # cuan
                 pass
-            menu = input('[P]enerbangan\n'
-                         '[A]rmada\n'
+            menu = input('[P]enerbangan | '
+                         '[A]rmada | '
                          '[T]iket\n'
                          '--> ').lower()
 

@@ -1,3 +1,5 @@
+from classAdmin import Admin
+
 
 def menuTiket(menu):
     while menu != 'i':
@@ -11,28 +13,24 @@ def menuTiket(menu):
     pass
 
 
-class Ticket:
+class Ticket(Admin):
     def __init__(self, tiket):
-        self.__tiket = tiket
-        self.__jenisTiket = []
-        for x in self.__tiket:
-            self.__jenisTiket.append(x)
+        self.tiket = tiket
+        self.tipeTiket = []
+        for x in self.tiket:
+            self.tipeTiket.append(x)
         pass
 
-    @property
-    def tiket(self):
-        return self.__tiket
-
-    def inputTiket(self, ubah, jenis):
+    def inputTiket(self, ubah, tipe):
         if ubah == 'j':
-            self.__tiket[self.__jenisTiket[jenis]][0] = int(input('Jumlah Baru\n--> '))
+            self.tiket[self.tipeTiket[tipe]][0] = int(input('Jumlah Baru\n--> '))
             pass
         elif ubah == 'h':
-            self.__tiket[self.__jenisTiket[jenis]][1] = int(input('Harga Baru\n--> '))
+            self.tiket[self.tipeTiket[tipe]][1] = int(input('Harga Baru\n--> '))
             pass
 
     def jenisTiket(self):
-        key = self.__tiket.keys()
+        key = self.tiket.keys()
         i = 1
         for x in key:
             print(f'{i}. {x}')
@@ -40,7 +38,7 @@ class Ticket:
             pass
         pass
 
-    def editTiket(self):
+    def editData(self):
         menu = None
         while menu != 'k':
             if menu == 'j':
@@ -79,12 +77,12 @@ class Ticket:
         pass
 
     def output(self, index):
-        print(self.__jenisTiket[index])
-        print(f'Sisa : {self.__tiket[self.__jenisTiket[index]][0]}\n'
-              f'Harga : {self.__tiket[self.__jenisTiket[index]][1]}')
+        print(self.tipeTiket[index])
+        print(f'Sisa : {self.tiket[self.tipeTiket[index]][0]}\n'
+              f'Harga : {self.tiket[self.tipeTiket[index]][1]}')
         pass
 
-    def outputTiket(self):
+    def outputData(self):
         menu, index = None, None
         while menu != 4:
             if menu == 1:
@@ -98,7 +96,7 @@ class Ticket:
                 pass
             self.jenisTiket()
             print('4. Keluar')
-            menu = int(input(''))
+            menu = int(input('--> '))
             index = menu - 1
 
     pass

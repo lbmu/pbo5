@@ -1,32 +1,53 @@
 from databasefunction import *
-from classAdmin import *
-from classManager import *
 from classBuyer import *
-from classTicket import *
-# import database as db
-# import database
+
+
+def outputValue(val):
+    for x in val:
+        print(x)
+
+
+def typo():
+    print('typo bang')
+
+
+def inputMenuPriv():
+    return input("[T]ambah | "
+                 "[H]apus | "
+                 "[E]dit | "
+                 "[O]utput | "
+                 "[L]ainnya | "
+                 "[K]eluar\n"
+                 "--> ").lower()
+    pass
 
 
 def adminMenu(user, pin):
     # for i in range(len(akun['admin'])):
-    if user in username['admin'] and pin in password['admin']:  # login admin
-        print('adm priv')
-        admin = Admin(username['manager'], password['manager']) # objek admin untuk data manager
-        inputMenuAdmin = None
-        while inputMenuAdmin != 'k':
-            if inputMenuAdmin == 't':
-                admin._tambahData()
+    if user in username['admin'] and len(user) != 0:
+        if pin in password['admin']:
+            print('adm priv')
+            admin = Admin(username['manager'], password['manager'])     # objek admin untuk data manager
+            inputMenuAdmin = None
+            while inputMenuAdmin != 'k':
+                if inputMenuAdmin == 't':
+                    admin.tambahData()
+                    pass
+                elif inputMenuAdmin == 'h':
+                    admin.hapusData()
+                    pass
+                elif inputMenuAdmin == 'e':
+                    admin.editData()
+                    pass
+                elif inputMenuAdmin == 'o':
+                    admin.outputData()
+                    pass
+                else:
+                    typo()
+                inputMenuAdmin = inputMenuPriv()
                 pass
-            elif inputMenuAdmin == 'h':
-                admin._hapusData()
-                pass
-            elif inputMenuAdmin == 'e':
-                admin._editData()
-                pass
-            elif inputMenuAdmin == 'o':
-                admin.outputData()
-                pass
-            inputMenuAdmin = inputMenuPriv()
+        else:
+            print('Maaf salah username atau password')
             pass
     else:
         print('Maaf salah username atau password')
@@ -38,17 +59,17 @@ def managerMenu(user, pin):
     if user in username['manager'] and pin in password['manager']:
         print('manager priv')
         menu = None
-        manager = Manager(data['penerbangan'], data['armada'])
+        manager = Manager(data['penerbangan'], data['armada'], data['rute'], tiket)
         # manager.tiket = tiket
         while menu != 'k':
             if menu == 't':
-                manager._tambahData()
+                manager.tambahData()
                 pass
             elif menu == 'h':
-                manager._hapusData()
+                manager.hapusData()
                 pass
             elif menu == 'e':
-                manager._editData()
+                manager.editData()
                 pass
             elif menu == 'o':
                 manager.outputData()
@@ -64,9 +85,9 @@ def managerMenu(user, pin):
     pass
 
 
-def buyerMenu(user, pin):
+def buyerMenu():
     print('Welcome to mobel lejeng')
-    buyer = Buyer(data['penerbangan'], data['armada'])
+    buyer = Buyer(data['penerbangan'], data['armada'], data['rute'], tiket)
     # buyer.tiket = tiket
     menu = None
     while menu != 'k':
