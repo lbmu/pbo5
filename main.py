@@ -19,9 +19,10 @@ def main():
             buyerMenu()
             pass
         pass
-    outputValue(data['penerbangan'])
-    outputValue(data['armada'])
-    outputValue(data['rute'])
+    # print(mainMenu)
+    # outputValue(data['penerbangan'])
+    # outputValue(data['armada'])
+    # outputValue(data['rute'])
 
     pass
 

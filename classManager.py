@@ -25,7 +25,7 @@ class Manager(Admin):
         self.tiket = Ticket(tiket)
         self._dataTerbang = len(terbang)
         self._dataArmada = len(armada)
-        self.__userQty = None
+        self.__userQty = 0
         pass
 
     def tambahData(self):
@@ -36,9 +36,10 @@ class Manager(Admin):
                 self._depart.append(dataDepart)
                 dataArrive = input('Tujuan : ')
                 self._arrive.append(dataArrive)
-
                 self._rute.append(f'{dataDepart} - {dataArrive}')
                 self._dataTerbang += 1
+                # Kasih jumlah tiket
+                # -->
             elif menu == 'a':   # Armada
                 self._armada.append(input('Masukkan Data Armada\n--> '))
                 self._dataArmada += 1
@@ -83,19 +84,17 @@ class Manager(Admin):
             menu = inputMenuManager()
         pass
 
-    def tiketData(self, tiket):
-        self.tiket = tiket
-        tiket = Ticket(self.tiket)
+    def tiketData(self):
         menu = None
         while menu != 'k':
             if menu == 'e':
-                tiket.editData()
+                self.tiket.editData()
                 pass
             elif menu == 'o':
-                tiket.outputData()
+                self.tiket.outputData()
                 pass
             elif menu == 'j':
-                tiket.jenisTiket()
+                self.tiket.jenisTiket()
                 pass
             # elif menu == ''
             menu = menuTiket(menu)
@@ -127,10 +126,16 @@ class Manager(Admin):
                 pass
             elif menu == 't':
                 self.tiket.outputData()
+                # tampilkan daftar tiket yang terjual
+                # -->
                 pass
             elif menu == 'b':  # buyer
+                # menampilkan daftar pembeli
+                # -->
                 pass
             elif menu == 'c':  # cuan
+                # menampilkan cuan
+                # -->
                 pass
             menu = input('[P]enerbangan | '
                          '[A]rmada | '

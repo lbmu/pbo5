@@ -1,5 +1,4 @@
 from classManager import *
-from classTicket import Ticket
 
 
 def inputMenuUser():
@@ -11,7 +10,6 @@ def inputMenuUser():
 
 class Buyer(Manager, Ticket):
     def __init__(self, terbang, armada, rute, tiket):
-        # super().__init__
         Manager.__init__(self, terbang, armada, rute, tiket)
         # Ticket.__init__(self, tiket)
         # self.tiket =
@@ -25,7 +23,8 @@ class Buyer(Manager, Ticket):
                              '--> ')
                 if cari in self._depart:
                     print(f'{cari} Tersedia!')
-
+                    # Kasih info jika ingin beli Tiket rute ini
+                    self.pesanTiket()
                     pass
 
                 pass
@@ -38,7 +37,13 @@ class Buyer(Manager, Ticket):
             menu = penerbangan()
         pass
 
-    def beliTiket(self):
+    def pesanTiket(self):
+        # Milih rute
+        # -->
+        # Milih Tipe Tiket (regular, premium, firstclass)
+        # -->
+        # Menampilkan jumlah pembayaran
+        # -->
         pass
 
     def outputData(self):

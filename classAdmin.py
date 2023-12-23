@@ -1,3 +1,6 @@
+import abc
+
+
 class Admin:
     def __init__(self, user, pwd):
         self.__user = user              # daftar username manager
@@ -5,6 +8,14 @@ class Admin:
         self.__jumlahData = len(user)   # jumlah manager
         # self.key = key
         pass
+
+    @property
+    def panggilUser(self):
+        return self.__user
+
+    # @abc.abstractmethod
+    # def kosong(self):
+    #     pass
 
     def tambahData(self):
         print('===TAMBAH AKUN MANAGER===')
@@ -18,7 +29,7 @@ class Admin:
         pass
 
     def hapusData(self):
-        print('===EDIT USERNAME===')
+        print('===HAPUS USERNAME===')
         self.output(self.__user)
         data = input('Masukkan username yang ingin dihapus : ')
         for i in range(self.__jumlahData):
@@ -61,7 +72,7 @@ class Admin:
         print('===USER===')
         self.output(self.__user)
         print('===PASSWORD===')
-        # self.output(self.__password)
+        self.output(self.__password)
         print('===JUMLAH MANAGER===')
         print(self.__jumlahData, 'Manager')
 

@@ -1,4 +1,5 @@
 from databasefunction import *
+# import databasefunction
 from classBuyer import *
 
 
@@ -28,8 +29,10 @@ def adminMenu(user, pin):
         if pin in password['admin']:
             print('adm priv')
             admin = Admin(username['manager'], password['manager'])     # objek admin untuk data manager
+            print(admin.panggilUser)
             inputMenuAdmin = None
             while inputMenuAdmin != 'k':
+                inputMenuAdmin = inputMenuPriv()
                 if inputMenuAdmin == 't':
                     admin.tambahData()
                     pass
@@ -44,7 +47,6 @@ def adminMenu(user, pin):
                     pass
                 else:
                     typo()
-                inputMenuAdmin = inputMenuPriv()
                 pass
         else:
             print('Maaf salah username atau password')
@@ -62,6 +64,7 @@ def managerMenu(user, pin):
         manager = Manager(data['penerbangan'], data['armada'], data['rute'], tiket)
         # manager.tiket = tiket
         while menu != 'k':
+            menu = inputMenuPriv()
             if menu == 't':
                 manager.tambahData()
                 pass
@@ -70,14 +73,14 @@ def managerMenu(user, pin):
                 pass
             elif menu == 'e':
                 manager.editData()
-                pass
             elif menu == 'o':
                 manager.outputData()
                 pass
             elif menu == 'l':
-                manager.tiketData(tiket)
-
-            menu = inputMenuPriv()
+                manager.tiketData()
+                pass
+            else:
+                typo()
             pass
 
     else:
