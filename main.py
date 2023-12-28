@@ -16,7 +16,7 @@ def main():
             managerMenu(input('Username : '), input('Password : '))
             pass
         elif mainMenu == 'c':
-            buyerMenu()
+            buyerMenu(input('Username : '), input('Password : '))
             pass
         pass
     # print(mainMenu)

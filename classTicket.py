@@ -26,7 +26,7 @@ class Ticket(Admin):
             self.tiket[self.tipeTiket[tipe]][0] = int(input('Jumlah Baru\n--> '))
             pass
         elif ubah == 'h':
-            self.tiket[self.tipeTiket[tipe]][1] = int(input('Harga Baru\n--> '))
+            self.tiket[self.tipeTiket[tipe]][2] = int(input('Harga Baru\n--> '))
             pass
 
     def jenisTiket(self):
@@ -79,7 +79,8 @@ class Ticket(Admin):
     def output(self, index):
         print(self.tipeTiket[index])
         print(f'Sisa : {self.tiket[self.tipeTiket[index]][0]}\n'
-              f'Harga : {self.tiket[self.tipeTiket[index]][1]}')
+              f'Harga : {self.tiket[self.tipeTiket[index]][2]}\n'
+              f'Terjual : {self.tiket[self.tipeTiket[index]][1]}')
         pass
 
     def outputData(self):

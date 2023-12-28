@@ -9,10 +9,10 @@ def inputMenuUser():
 
 
 class Buyer(Manager, Ticket):
-    def __init__(self, terbang, armada, rute, tiket):
-        Manager.__init__(self, terbang, armada, rute, tiket)
+    def __init__(self, terbang, armada, rute, tiket, cuan, user):
+        Manager.__init__(self, terbang, armada, rute, tiket, cuan)
         # Ticket.__init__(self, tiket)
-        # self.tiket =
+        self.user = user
         pass
 
     def cariData(self):
@@ -33,13 +33,37 @@ class Buyer(Manager, Ticket):
                              '-->')
                 if cari in self._arrive:
                     print(f'{cari} Tersedia!')
+                    self.pesanTiket()
                 pass
             menu = penerbangan()
         pass
 
-    def pesanTiket(self):
-        # Milih rute
+    def cariTiket(self):
+        # ini nagapain
         # -->
+        pass
+
+    def pesanTiket(self):
+        Admin.output(self, self._rute)
+        rute = int(input('Pilih Rute:\n--> '))
+        print(self._rute[rute-1])
+        Admin.output(self, self.tiket.tipeTiket)
+        tiket = int(input('Pilih Kelas Tiket:\n--> '))
+        print(self.tiket.tipeTiket[tiket-1])
+        jumlahTiket = int(input('Pilih Jumlah Tiket:\n--> '))
+        print(f'Total Pembayaran\n'
+              f'==> {jumlahTiket} tiket {self.tiket.tipeTiket[tiket-1]}\n'
+              f'==> Anda harus membayar total {jumlahTiket * self.tiket.tiket[self.tiket.tipeTiket[tiket-1]][2]}')
+        necromantic = input('Lanjutkan?\n'
+                            '(y/n) --> ').lower()
+        if necromantic == 'y':
+            self.cuan(self.user,
+                      self._rute[rute-1],
+                      self.tiket.tipeTiket[tiket-1],
+                      jumlahTiket)
+            print('riders on the storm')
+        else:
+            pass
         # Milih Tipe Tiket (regular, premium, firstclass)
         # -->
         # Menampilkan jumlah pembayaran
