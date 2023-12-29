@@ -1,5 +1,5 @@
 username = {'admin': 'yoz',
-            'manager': ['', 'rusdi'],
+            'manager': ['rusdi'],
             'user': ['jono']}
 password = {'admin': '',
             'manager': [''],

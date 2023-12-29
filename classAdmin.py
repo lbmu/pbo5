@@ -1,13 +1,9 @@
-import abc
-
-
 class Admin:
     def __init__(self, user, pwd):
         self.__user = user              # daftar username manager
         self.__password = pwd           # daftar password manager
         self.__jumlahData = len(user)   # jumlah manager
         # self.key = key
-        pass
 
     @property
     def panggilUser(self):
@@ -15,7 +11,7 @@ class Admin:
 
     # @abc.abstractmethod
     # def kosong(self):
-    #     pass
+    #     
 
     def tambahData(self):
         print('===TAMBAH AKUN MANAGER===')
@@ -26,7 +22,7 @@ class Admin:
         self.__user.append(user)
         self.__password.append(password)
         self.__jumlahData += 1
-        pass
+        print(f"Username {user} berhasil ditambahkan ")
 
     def hapusData(self):
         print('===HAPUS USERNAME===')
@@ -38,8 +34,8 @@ class Admin:
                 self.__user.pop(i)
                 self.__password.pop(i)
                 self.__jumlahData -= 1
+                print(f"Username {data} berhasil dihapus ")
                 break
-            pass
 
     def editData(self):
         self.output(self.__user)
@@ -50,23 +46,21 @@ class Admin:
                 while menu != 'k':
                     if menu == 'u':
                         self.__user[i] = input('username baru : ')
-                        pass
+
                     elif menu == 'p':
                         self.__password[i] = input('password baru : ')
-                        pass
+                    print(f"Usern {data} berhasil diubah ")
+
                     menu = input('[U]sername | '
-                                 '[P]assword | '
+                                 '[P]asspassword | '
                                  '[K]eluar\n'
                                  '--> ').lower()
-                pass
-        pass
 
     def output(self, data):
         i = 1
         for x in data:
             print(f'({i}) {x}')
             i += 1
-        pass
 
     def outputData(self):
         print('===USER===')
@@ -75,5 +69,3 @@ class Admin:
         self.output(self.__password)
         print('===JUMLAH MANAGER===')
         print(self.__jumlahData, 'Manager')
-
-    pass

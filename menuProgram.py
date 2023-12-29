@@ -9,7 +9,7 @@ def outputValue(val):
 
 
 def typo():
-    print('typo bang')
+    print('Maaf tidak valid')
 
 
 def inputMenuPriv():
@@ -20,88 +20,86 @@ def inputMenuPriv():
                  "[L]ainnya | "
                  "[K]eluar\n"
                  "--> ").lower()
-    pass
 
 
 def adminMenu(user, pin):
     # for i in range(len(akun['admin'])):
     if user in username['admin'] and len(user) != 0:
         if pin in password['admin']:
-            print('adm priv')
+            print('Login sebagai')
             admin = Admin(username['manager'], password['manager'])     # objek admin untuk data manager
-            print(admin.panggilUser)
             inputMenuAdmin = None
             while inputMenuAdmin != 'k':
                 inputMenuAdmin = inputMenuPriv()
                 if inputMenuAdmin == 't':
                     admin.tambahData()
-                    pass
+                    
                 elif inputMenuAdmin == 'h':
                     admin.hapusData()
-                    pass
+                    
                 elif inputMenuAdmin == 'e':
                     admin.editData()
-                    pass
+                    
                 elif inputMenuAdmin == 'o':
                     admin.outputData()
-                    pass
+                    
                 else:
                     typo()
-                pass
+                
         else:
-            print('Maaf salah username atau password')
-            pass
+            typo()
+            
     else:
-        print('Maaf salah username atau password')
-        pass
-    pass
-
+        typo()
+    
 
 def managerMenu(user, pin):
-    if user in username['manager'] and pin in password['manager']:
-        print('manager priv')
-        menu = None
-        manager = Manager(data['penerbangan'], data['armada'], data['rute'], tiket, cuan)
-        # manager.tiket = tiket
-        while menu != 'k':
-            menu = inputMenuPriv()
-            if menu == 't':
-                manager.tambahData()
-                pass
-            elif menu == 'h':
-                manager.hapusData()
-                pass
-            elif menu == 'e':
-                manager.editData()
-            elif menu == 'o':
-                manager.outputData()
-                pass
-            elif menu == 'l':
-                manager.tiketData()
-                pass
-            else:
-                typo()
-            pass
+    if user in username['manager'] and len(user) != 0:
+        if pin in password['manager']:
+            print('manager priv')
+            menu = None
+            manager = Manager(data['penerbangan'], data['armada'], data['rute'], tiket, cuan)
+            # manager.tiket = tiket
+            while menu != 'k':
+                menu = inputMenuPriv()
+                if menu == 't':
+                    manager.tambahData()
 
+                elif menu == 'h':
+                    manager.hapusData()
+
+                elif menu == 'e':
+                    manager.editData()
+                elif menu == 'o':
+                    manager.outputData()
+
+                elif menu == 'l':
+                    manager.tiketData()
+
+                else:
+                    typo()
+
+
+        else:
+            print('Maaf salah username atau password')
     else:
         print('Maaf salah username atau password')
-    pass
 
 
 def buyerMenu(user, pin):
-    print('Welcome to mobel lejeng')
+    print('Welcome to ZTravel')
     buyer = Buyer(data['penerbangan'], data['armada'], data['rute'], tiket, cuan, user)
     # buyer.tiket = tiket
     menu = None
     while menu != 'k':
         if menu == 'c':
             buyer.cariData()
-            pass
+            
         elif menu == 'd':
             buyer.outputData()
-            pass
+            
         elif menu == 'p':
             buyer.pesanTiket()
-            pass
+            
         menu = inputMenuUser()
-    pass
+    

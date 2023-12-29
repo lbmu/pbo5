@@ -13,7 +13,6 @@ class Buyer(Manager, Ticket):
         Manager.__init__(self, terbang, armada, rute, tiket, cuan)
         # Ticket.__init__(self, tiket)
         self.user = user
-        pass
 
     def cariData(self):
         menu = None
@@ -25,23 +24,15 @@ class Buyer(Manager, Ticket):
                     print(f'{cari} Tersedia!')
                     # Kasih info jika ingin beli Tiket rute ini
                     self.pesanTiket()
-                    pass
 
-                pass
             elif menu == 'a':
                 cari = input('Masukkan kota tujuan\n'
                              '-->')
                 if cari in self._arrive:
                     print(f'{cari} Tersedia!')
                     self.pesanTiket()
-                pass
+                
             menu = penerbangan()
-        pass
-
-    def cariTiket(self):
-        # ini nagapain
-        # -->
-        pass
 
     def pesanTiket(self):
         Admin.output(self, self._rute)
@@ -64,11 +55,10 @@ class Buyer(Manager, Ticket):
             print('riders on the storm')
         else:
             pass
-        # Milih Tipe Tiket (regular, premium, firstclass)
-        # -->
-        # Menampilkan jumlah pembayaran
-        # -->
-        pass
+            # Milih Tipe Tiket (regular, premium, firstclass)
+            # -->
+            # Menampilkan jumlah pembayaran
+            # -->
 
     def outputData(self):
         menu = None
@@ -80,5 +70,3 @@ class Buyer(Manager, Ticket):
             elif menu == 'a':
                 self.output(self._armada)
             menu = input()
-
-    pass
