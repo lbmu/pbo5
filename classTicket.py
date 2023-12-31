@@ -8,7 +8,7 @@ def menuTiket(menu):
                      '[O]utput\n'
                      '[K]embali\n'
                      '--> '
-                     )
+                     ).lower()
         return menu
 
 
@@ -22,9 +22,11 @@ class Ticket(Admin):
     def inputTiket(self, ubah, tipe):
         if ubah == 'j':
             self.tiket[self.tipeTiket[tipe]][0] = int(input('Jumlah Baru\n--> '))
+            print('jumlah tiket berhasil diubah')
             
         elif ubah == 'h':
             self.tiket[self.tipeTiket[tipe]][2] = int(input('Harga Baru\n--> '))
+            print('harga tiket berhasil diubah')
             
     @abstractmethod
     def pesanTiket(self):
@@ -70,7 +72,7 @@ class Ticket(Admin):
             menu = input('[J]umlah\n'
                          '[H]arga\n'
                          '[K]eluar\n'
-                         '--> ')
+                         '--> ').lower()
 
     def output(self, index):
         print(self.tipeTiket[index])
