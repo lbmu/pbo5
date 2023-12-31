@@ -1,3 +1,4 @@
+# Database = berisi semua keterangan data user, penerbangan, detail tiket, serta data uang user untuk melakukan pembayaran
 username = {'admin': 'yoz',
             'manager': ['rusdi'],
             'user': ['jono']}
