@@ -37,13 +37,15 @@ class Manager(Admin):
                 self._arrive.append(dataArrive)
                 self._rute.append(f'{dataDepart} - {dataArrive}')
                 self._dataTerbang += 1
+                print(f'Rute {dataDepart} - {dataArrive} berhasil ditambahkan di database')
                 # Kasih jumlah tiket
                 # -->
             elif menu == 'a':   # Armada
-                self._armada.append(input('Masukkan Data Armada\n--> '))
+                armada = input('Masukkan Data Armada\n--> ')
+                self._armada.append(armada)
+                print(f'Armada {armada}')
                 self._dataArmada += 1
-                
-            print('Penambahan Data')
+                print(f'Data armada {armada} berhasil ditambahkan di database')
             menu = inputMenuManager()
 
     def hapusData(self):
@@ -54,12 +56,14 @@ class Manager(Admin):
                 self.output(self._rute)
                 pivot = int(input('Masukkan Data yang ingin dihapus = '))
                 self._rute.pop(pivot-1)
+                print('Penerbangan berhasil dihapus')
                 
             elif menu == 'a':   # Armada
                 for i in range(self._dataArmada):
                     print(f'{[i+1]}. {self._armada[i]}')
                 pivot = int(input('Masukkan Data yang ingin dihapus = '))
                 self._armada.pop(pivot-1)
+                print('Armada berhasil dihapus')
             menu = inputMenuManager()
 
     def editData(self):
@@ -75,7 +79,7 @@ class Manager(Admin):
                 for i in range(self._dataArmada):
                     print(f'{i+1}. {self._armada[i]}')
                     pivot = int(input('Masukkan Data yang ingin diedit : '))
-                    self._armada[pivot-1] = input('Masukkan data baru\n')
+                    self._armada[pivot-1] = input('Masukkan data armada baru\n')
                 
             menu = inputMenuManager()
 
@@ -166,6 +170,7 @@ class Manager(Admin):
                          '[A]rmada | '
                          '[T]iket | '
                          'Pem[b]eli | '
-                         '[C]uan'
+                         '[C]uan | '
+                         '[K]eluar'
                          '\n'
                          '--> ').lower()

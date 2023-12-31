@@ -21,7 +21,7 @@ def main():
             
         elif mainMenu == 'c':
             buyerMenu(input('Username : '), input('Password : '))
-        else :
+        else:
             typo()
 
 

@@ -22,7 +22,7 @@ def adminMenu(user, pin):
     # for i in range(len(akun['admin'])):
     if user in username['admin'] and len(user) != 0:
         if pin in password['admin']:
-            print('Login sebagai')
+            print('Login berhasil sebagai admin',user)
             admin = Admin(username['manager'], password['manager'])     # objek admin untuk data manager
             inputMenuAdmin = None
             while inputMenuAdmin != 'k':
@@ -39,20 +39,13 @@ def adminMenu(user, pin):
                 elif inputMenuAdmin == 'o':
                     admin.outputData()
                     
-                else:
-                    typo()
-                
-        else:
-            typo()
-            
-    else:
-        typo()
+
     
 
 def managerMenu(user, pin):
     if user in username['manager'] and len(user) != 0:
         if pin in password['manager']:
-            print('manager priv')
+            print('Anda login sebagai manajer', user)
             menu = None
             manager = Manager(data['penerbangan'], data['armada'], data['rute'], tiket, cuan)
             # manager.tiket = tiket
@@ -66,6 +59,7 @@ def managerMenu(user, pin):
 
                 elif menu == 'e':
                     manager.editData()
+
                 elif menu == 'o':
                     manager.outputData()
 
@@ -83,11 +77,12 @@ def managerMenu(user, pin):
 
 
 def buyerMenu(user, pin):
-    print('Welcome to ZTravel')
+    print('Welcome to ZTravel', user)
     buyer = Buyer(data['penerbangan'], data['armada'], data['rute'], tiket, cuan, user)
     # buyer.tiket = tiket
     menu = None
     while menu != 'k':
+        menu = inputMenuUser()
         if menu == 'c':
             buyer.cariData()
             
@@ -96,6 +91,7 @@ def buyerMenu(user, pin):
             
         elif menu == 'p':
             buyer.pesanTiket()
-            
-        menu = inputMenuUser()
+
+
+
     

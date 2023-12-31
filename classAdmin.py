@@ -1,4 +1,4 @@
-from databasefunction import typo()
+from databasefunction import typo
 class Admin:
     def __init__(self, user, pwd):
         self.__user = user              # daftar username manager
@@ -15,7 +15,7 @@ class Admin:
         self.__user.append(user)
         self.__password.append(password)
         self.__jumlahData += 1
-        print(f"Username {user} berhasil ditambahkan ")
+        self.konfirmasi('t', user)
         
     # Method untuk admin menghapus data akun yang sudah terdaftar di "databasefunction.py"
     def hapusData(self):
@@ -28,7 +28,7 @@ class Admin:
                 self.__user.pop(i)
                 self.__password.pop(i)
                 self.__jumlahData -= 1
-                print(f"Username {data} berhasil dihapus ")
+                self.konfirmasi('h', data)
                 break
                 
     # Method untuk admin mengubah data akun yang sudah terdaftar di "databasefunction.py"
@@ -41,18 +41,18 @@ class Admin:
                 while menu != 'k':
                     if menu == 'u':
                         self.__user[i] = input('username baru : ')
-                        print(f"Usern {data} berhasil diubah ")
+                        self.konfirmasi('u', self.__user)
                         
                     elif menu == 'p':
                         self.__password[i] = input('password baru : ')
-                        print(f"Usern {data} berhasil diubah ")
+                        self.konfirmasi('p', self.__password)
 
                     else :
-                        typo()
+                        pass
                     
 
                     menu = input('[U]sername | '
-                                 '[P]asspassword | '
+                                 '[P]assword | '
                                  '[K]eluar\n'
                                  '--> ').lower()
                     
@@ -63,6 +63,17 @@ class Admin:
             print(f'({i}) {x}')
             i += 1
 
+    def konfirmasi(self, menu, data):
+        if menu == 't':
+            print(f'Data {data} berhasil ditambahkan')
+        elif menu == 'h':
+            print(f'Data {data} berhasil dihapus')
+        elif menu == 'e':
+            print(f'Data {data} berhasil diubah')
+        elif menu == 'p' :
+            print(f'Password telah diganti di database menjadi {data}')
+        elif menu == 'u' :
+            print(f'Username telah diganti di database menjadi {data}')
     # Method yang dilakukan admin untuk meanampilkan data akun yang tersedia di "databasefunction.py"
     def outputData(self):
         print('===USER===')
