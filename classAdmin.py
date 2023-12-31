@@ -31,7 +31,7 @@ class Admin:
                 print(f"Username {data} berhasil dihapus ")
                 break
                 
-    # 
+    # Method untuk admin mengubah data akun yang sudah terdaftar di "databasefunction.py"
     def editData(self):
         self.output(self.__user)
         data = input('Masukkan username yang ingin diedit : ')
@@ -56,13 +56,14 @@ class Admin:
                                  '[K]eluar\n'
                                  '--> ').lower()
                     
-
+    # Method statik untuk membantu program lain dalam melakukan output
     def output(self, data):
         i = 1
         for x in data:
             print(f'({i}) {x}')
             i += 1
 
+    # Method yang dilakukan admin untuk meanampilkan data akun yang tersedia di "databasefunction.py"
     def outputData(self):
         print('===USER===')
         self.output(self.__user)
