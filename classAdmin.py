@@ -1,4 +1,5 @@
 from databasefunction import typo
+
 class Admin:
     def __init__(self, user, pwd):
         self.__user = user              # daftar username manager

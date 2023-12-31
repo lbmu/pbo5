@@ -13,7 +13,7 @@ def inputMenuPriv():
                  "[H]apus | "
                  "[E]dit | "
                  "[O]utput | "
-                 "[L]ainnya | "
+                 "[L]ainnya (tiketing)| "
                  "[K]eluar\n"
                  "--> ").lower()
 
@@ -38,9 +38,17 @@ def adminMenu(user, pin):
                     
                 elif inputMenuAdmin == 'o':
                     admin.outputData()
-                    
 
-    
+                elif inputMenuAdmin == 'l':
+                    print('Bukan Manager')
+
+                else:
+                    typo()
+        else:
+            print('Maaf salah username atau password')
+    else:
+        print('Maaf salah username atau password')
+
 
 def managerMenu(user, pin):
     if user in username['manager'] and len(user) != 0:

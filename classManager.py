@@ -103,9 +103,10 @@ class Manager(Admin):
         # self.__cuan['rute'].append(rute)
         # self.__cuan['tiket'].append(tiket)
         # self.__cuan['jumlahTiket'].append(jml)
-        cuan = jml * self.tiket.tiket[tiket][1]
+        print(self.tiket.tiket[tiket])
+        cuan = jml * self.tiket.tiket[tiket][2]
         self.tiket.tiket[tiket][0] -= jml
-        self.tiket.tiket[tiket][2] += jml
+        self.tiket.tiket[tiket][1] += jml
         self.__cuan['cuan'].append(cuan)
 
     def __tiketTerjual(self, pilih):

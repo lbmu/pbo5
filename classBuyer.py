@@ -24,26 +24,38 @@ class Buyer(Manager, Ticket):
                 if cari in self._depart:
                     print(f'{cari} Tersedia!')
                     # Kasih info jika ingin beli Tiket rute ini
-                    self.pesanTiket()
+                    if input('Apakah anda ingin memesan dengan rute ini?(y/n)\n--> ').lower() == 'y':
+                        self.pesanTiket()
+                    else:
+                        break
 
             elif menu == 'a':
                 cari = input('Masukkan kota tujuan\n'
                              '-->')
                 if cari in self._arrive:
                     print(f'{cari} Tersedia!')
-                    self.pesanTiket()
+                    if input('Apakah anda ingin memesan dengan rute ini?(y/n)\n--> ').lower() == 'y':
+                        self.pesanTiket()
+                    else:
+                        break
                 
             menu = penerbangan()
 
     def pesanTiket(self):
         Admin.output(self, self._rute)
         rute = int(input('Pilih Rute:\n--> '))
-        print(self._rute[rute-1])
+        print('Anda memilih rute ', self._rute[rute-1])
+        Admin.output(self, self._armada)
+        armada = int(input('Pilih armada:\n--> '))
+        print(f'Anda memilih armada {self._armada[armada-1]}')
         Admin.output(self, self.tiket.tipeTiket)
         tiket = int(input('Pilih Kelas Tiket:\n--> '))
-        print(self.tiket.tipeTiket[tiket-1])
+        print('Anda memilih kelas tiket', self.tiket.tipeTiket[tiket-1], 'dengan harga satu tiket',
+              self.tiket.tiket[self.tiket.tipeTiket[tiket-1]][2])
         jumlahTiket = int(input('Pilih Jumlah Tiket:\n--> '))
         print(f'Total Pembayaran\n'
+              f'==> Rute : {self._rute[rute-1]}\n'
+              f'==> Armada : {self._armada[armada-1]}\n'
               f'==> {jumlahTiket} tiket {self.tiket.tipeTiket[tiket-1]}\n'
               f'==> Anda harus membayar total {jumlahTiket * self.tiket.tiket[self.tiket.tipeTiket[tiket-1]][2]}')
         necromantic = input('Lanjutkan?\n'
@@ -56,20 +68,19 @@ class Buyer(Manager, Ticket):
             print('Tiket berhasil dipesan, silahkan cek aplikasi untuk detail tiket anda')
         else:
             pass
-            # Milih Tipe Tiket (regular, premium, firstclass)
-            # -->
-            # Menampilkan jumlah pembayaran
-            # -->
 
     def outputData(self):
         menu = None
         while menu != 'k':
             if menu == 'r':
-                self.output(self._rute)
+                print('===RUTE YANG TERSEDIA===')
+                Admin.output(self, self._rute)
             elif menu == 't':
+                print('===TIKET YANG TERSEDIA===')
                 self.tiket.outputData()
             elif menu == 'a':
-                self.output(self._armada)
+                print('===ARMADA YANG TERSEDIA===')
+                Admin.output(self, self._armada)
             print('[A]rmada | '
                   '[R]ute | '
                   '[T]iket | '

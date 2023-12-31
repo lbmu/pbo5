@@ -4,6 +4,7 @@ from abc import abstractmethod
 
 def menuTiket(menu):
     while menu != 'i':
+        print('===TIKETING===')
         menu = input('[E]dit\n'
                      '[O]utput\n'
                      '[K]embali\n'
