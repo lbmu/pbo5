@@ -4,7 +4,8 @@ from classManager import *
 def inputMenuUser():
     return input('[C]ari | '
                  '[D]aftar | '
-                 '[P]esan\n'
+                 '[P]esan | '
+                 '[K]eluar\n'
                  '--> ').lower()
 
 
@@ -52,7 +53,7 @@ class Buyer(Manager, Ticket):
                       self._rute[rute-1],
                       self.tiket.tipeTiket[tiket-1],
                       jumlahTiket)
-            print('riders on the storm')
+            print('Tiket berhasil dipesan, silahkan cek aplikasi untuk detail tiket anda')
         else:
             pass
             # Milih Tipe Tiket (regular, premium, firstclass)
@@ -63,10 +64,14 @@ class Buyer(Manager, Ticket):
     def outputData(self):
         menu = None
         while menu != 'k':
-            if menu == 'd':
+            if menu == 'r':
                 self.output(self._rute)
             elif menu == 't':
                 self.tiket.outputData()
             elif menu == 'a':
                 self.output(self._armada)
-            menu = input()
+            print('[A]rmada | '
+                  '[R]ute | '
+                  '[T]iket | '
+                  '[K]eluar')
+            menu = input('--> ').lower()
