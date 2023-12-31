@@ -3,8 +3,8 @@ from menuProgram import *
 # Estetika baris
 # Perapihan Menu
 
-
-def main(): # Menu untuk user memilih login "Admin, Manajer, atau Customer"
+# Menu untuk user memilih login "[A]dmin, [M]anajer, atau [C]ustomer"
+def main(): 
     mainMenu = None
     while mainMenu != 'k':
         mainMenu = input('Login sebagai\n'
