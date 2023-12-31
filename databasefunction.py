@@ -23,3 +23,6 @@ cuan = {'nama': ['jono'],
         'jumlahTiket': [2],
         'cuan': [40000000]}
 # print(type(akun['manajer']))
+
+def typo():
+    print('Maaf tidak valid')
