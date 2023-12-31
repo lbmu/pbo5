@@ -1,19 +1,12 @@
+from databasefunction import typo()
 class Admin:
     def __init__(self, user, pwd):
         self.__user = user              # daftar username manager
         self.__password = pwd           # daftar password manager
         self.__jumlahData = len(user)   # jumlah manager
-        # self.key = key
 
-    @property
-    def panggilUser(self):
-        return self.__user
-
-    # @abc.abstractmethod
-    # def kosong(self):
-    #     
-
-    def tambahData(self):
+    # Method untuk admin menambah data akun user
+    def tambahData(self): 
         print('===TAMBAH AKUN MANAGER===')
         print('USERNAME YANG TERSEDIA : ')
         self.output(self.__user)
@@ -23,7 +16,8 @@ class Admin:
         self.__password.append(password)
         self.__jumlahData += 1
         print(f"Username {user} berhasil ditambahkan ")
-
+        
+    # Method untuk admin menghapus data akun yang sudah terdaftar di "databasefunction.py"
     def hapusData(self):
         print('===HAPUS USERNAME===')
         self.output(self.__user)
@@ -36,7 +30,8 @@ class Admin:
                 self.__jumlahData -= 1
                 print(f"Username {data} berhasil dihapus ")
                 break
-
+                
+    # Method untuk admin mengubah data akun yang sudah terdaftar di "databasefunction.py"
     def editData(self):
         self.output(self.__user)
         data = input('Masukkan username yang ingin diedit : ')
@@ -46,22 +41,29 @@ class Admin:
                 while menu != 'k':
                     if menu == 'u':
                         self.__user[i] = input('username baru : ')
-
+                        print(f"Usern {data} berhasil diubah ")
+                        
                     elif menu == 'p':
                         self.__password[i] = input('password baru : ')
-                    print(f"Usern {data} berhasil diubah ")
+                        print(f"Usern {data} berhasil diubah ")
+
+                    else :
+                        typo()
+                    
 
                     menu = input('[U]sername | '
                                  '[P]asspassword | '
                                  '[K]eluar\n'
                                  '--> ').lower()
-
+                    
+    # Method statik untuk membantu program lain dalam melakukan output
     def output(self, data):
         i = 1
         for x in data:
             print(f'({i}) {x}')
             i += 1
 
+    # Method yang dilakukan admin untuk meanampilkan data akun yang tersedia di "databasefunction.py"
     def outputData(self):
         print('===USER===')
         self.output(self.__user)

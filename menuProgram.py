@@ -8,10 +8,6 @@ def outputValue(val):
         print(x)
 
 
-def typo():
-    print('Maaf tidak valid')
-
-
 def inputMenuPriv():
     return input("[T]ambah | "
                  "[H]apus | "

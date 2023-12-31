@@ -3,8 +3,8 @@ from menuProgram import *
 # Estetika baris
 # Perapihan Menu
 
-
-def main():
+# Menu untuk user memilih login "[A]dmin, [M]anajer, atau [C]ustomer"
+def main(): 
     mainMenu = None
     while mainMenu != 'k':
         mainMenu = input('Login sebagai\n'
@@ -21,6 +21,8 @@ def main():
             
         elif mainMenu == 'c':
             buyerMenu(input('Username : '), input('Password : '))
+        else :
+            typo()
 
 
 if __name__ == '__main__':
